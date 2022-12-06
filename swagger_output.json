@@ -1,0 +1,1036 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Spots",
+    "description": ""
+  },
+  "host": "sparta4.shop",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "회원정보API"
+    }
+  ],
+  "schemes": ["https"],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "any description..."
+    }
+  },
+  "consumes": ["application/json", "multipart/form-data"],
+  "produces": ["application/json", "multipart/form-data"],
+  "paths": {
+    "/users/signup": {
+      "post": {
+        "description": "회원가입",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "loginId": {
+                  "example": "아이디"
+                },
+                "password": {
+                  "example": "비밀번호"
+                },
+                "confirmPassword": {
+                  "example": "비밀번호확인"
+                },
+                "nickname": {
+                  "example": "닉네임"
+                },
+                "gender": {
+                  "example": "성별"
+                },
+                "phone": {
+                  "example": "번호"
+                },
+                "sports": {
+                  "example": ["풋살", "테니스"]
+                },
+                "favSports": {
+                  "example": ["배드민턴"]
+                },
+                "recommendId": {
+                  "example": "aa"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/login": {
+      "post": {
+        "description": "로그인",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "loginId": {
+                  "example": "아이디"
+                },
+                "password": {
+                  "example": "비밀번호"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/checkId": {
+      "post": {
+        "description": "ID 중복확인",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "loginId": {
+                  "example": "아이디"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/checkNick": {
+      "post": {
+        "description": "닉네임 중복확인",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nickname": {
+                  "example": "닉네임"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/checkPhone": {
+      "post": {
+        "description": "핸드폰 중복확인",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "example": "번호"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/findId": {
+      "post": {
+        "description": "아이디 찾기",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "example": "번호"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/findPW": {
+      "post": {
+        "description": "비밀번호 찾기",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "loginId": {
+                  "example": "아이디"
+                },
+                "phone": {
+                  "example": "번호"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/plusPoint": {
+      "patch": {
+        "description": "포인트 충전",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "loginId": {
+                  "example": "ID"
+                },
+                "point": {
+                  "example": "금액"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/users/me": {
+      "get": {
+        "description": "회원정보 조회",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "patch": {
+        "description": "회원정보 수정",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "example": "비밀번호"
+                },
+                "nickname": {
+                  "example": "닉네임"
+                },
+                "gender": {
+                  "example": "성별"
+                },
+                "address": {
+                  "example": "주소"
+                },
+                "phone": {
+                  "example": "번호"
+                },
+                "sports": {
+                  "example": ["풋살"]
+                },
+                "favSports": {
+                  "example": ["배드민턴"]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/users/drop": {
+      "patch": {
+        "description": "회원탈퇴",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/users/cancelDrop": {
+      "patch": {
+        "description": "회원탈퇴 취소",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/teams/me": {
+      "get": {
+        "description": "나의 팀 조회",
+        "tags": ["Teams"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/teams/{teamId}": {
+      "get": {
+        "description": "팀 상세정보 조회",
+        "tags": ["Teams"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "teamId",
+            "in": "path",
+            "type": "integer",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "teamId": {
+                  "example": 2
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "팀 삭제",
+        "tags": ["Teams"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "teamId",
+            "in": "path",
+            "type": "integer",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "teamId": {
+                  "example": 2
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/teams/": {
+      "post": {
+        "description": "신규 팀 생성",
+        "tags": ["Teams"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "teamName": {
+                  "example": "팀 이름"
+                },
+                "member": {
+                  "example": "5"
+                },
+                "sports": {
+                  "example": "종목"
+                }
+              }
+            }
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "schema": {
+              "type": "file",
+              "properties": {
+                "image": {
+                  "example": "이미지파일 (2MB 이하,720*720 이하)"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "patch": {
+        "description": "팀 수정",
+        "tags": ["Teams"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "teamName": {
+                  "example": "팀 이름"
+                },
+                "newAdmin": {
+                  "example": "위임할 nickname"
+                },
+                "newMember": {
+                  "example": "5"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/reservations/register": {
+      "post": {
+        "description": "매치 신청",
+        "tags": ["Reservations"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "matchId": {
+                  "example": "221111t15"
+                },
+                "place": {
+                  "example": "아스가르드"
+                },
+                "teamName": {
+                  "example": "토르테니스단"
+                },
+                "member": {
+                  "example": 5
+                },
+                "date": {
+                  "example": "2022-11-07-13:00"
+                },
+                "isDouble": {
+                  "example": true
+                },
+                "price": {
+                  "example": 5000
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/reservations/register/{place}/{date}": {
+      "get": {
+        "description": "매치 조회",
+        "tags": ["Reservations"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "place",
+            "in": "path",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "place": {
+                  "example": "아스가르드"
+                }
+              }
+            }
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "example": "2022-11-11"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/reservations/me": {
+      "get": {
+        "description": "나의 매치 조회",
+        "tags": ["Reservations"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places": {
+      "post": {
+        "description": "시설 등록",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "string",
+                  "example": "경도"
+                },
+                "y": {
+                  "type": "string",
+                  "example": "위도"
+                },
+                "sports": {
+                  "type": "string",
+                  "example": "종목"
+                },
+                "spotName": {
+                  "type": "string",
+                  "example": "시설이름"
+                },
+                "spotKind": {
+                  "type": "string",
+                  "example": "스팟종류"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "주소"
+                },
+                "comforts": {
+                  "type": "json",
+                  "example": ["화장실", "장비대여"]
+                },
+                "price": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "desc": {
+                  "type": "string",
+                  "example": "스팟설명"
+                }
+              }
+            }
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "schema": {
+              "type": "file",
+              "properties": {
+                "image": {
+                  "example": "이미지파일 (2MB 이하,720*720 이하)"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "get": {
+        "description": "전체 시설 조회",
+        "tags": ["Places"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/new": {
+      "get": {
+        "description": "사설 최신등록 6개만",
+        "tags": ["Places"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/all": {
+      "get": {
+        "description": "전체 사설 + openApi 조회",
+        "tags": ["Places"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/me": {
+      "get": {
+        "description": "본인것만 조회",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/{sports}": {
+      "get": {
+        "description": "종목별 조회",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "sports",
+            "in": "path",
+            "type": "string",
+            "schema": {
+              "properties": {
+                "sports": {
+                  "type": "string",
+                  "example": "풋살장"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/keyword/{keywords}": {
+      "get": {
+        "description": "키워드별 조회",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "keywords",
+            "in": "path",
+            "type": "string",
+            "schema": {
+              "properties": {
+                "keywords": {
+                  "type": "string",
+                  "example": "주차장"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/{placesId}": {
+      "patch": {
+        "description": "수정하기",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "placesId",
+            "in": "path",
+            "type": "integer",
+            "schema": {
+              "properties": {
+                "placesId": {
+                  "type": "integer",
+                  "example": 13
+                }
+              }
+            }
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sports": {
+                  "type": "string",
+                  "example": "종목"
+                },
+                "spotName": {
+                  "type": "string",
+                  "example": "시설이름"
+                },
+                "spotKind": {
+                  "type": "string",
+                  "example": "스팟종류"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "주소"
+                },
+                "comforts": {
+                  "type": "json",
+                  "example": ["화장실", "장비대여"]
+                },
+                "price": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "desc": {
+                  "type": "string",
+                  "example": "스팟설명"
+                }
+              }
+            }
+          }
+         
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "삭제하기",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "placesId",
+            "in": "path",
+            "type": "integer",
+            "schema": {
+              "properties": {
+                "placesId": {
+                  "type": "integer",
+                  "example": 12
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/open": {
+      "get": {
+        "description": "open api 전체 시설 조회",
+        "tags": ["Places"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/open/{minclassnm}": {
+      "get": {
+        "description": "소분류명 조회",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "minclassnm",
+            "in": "path",
+            "type": "string",
+            "schema": {
+              "properties": {
+                "minclassnm": {
+                  "type": "string",
+                  "example": "테니스장"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/places/opens/{areanm}": {
+      "get": {
+        "description": "지역명 조회",
+        "tags": ["Places"],
+        "parameters": [
+          {
+            "name": "areanm",
+            "in": "path",
+            "type": "string",
+            "schema": {
+              "properties": {
+                "areanm": {
+                  "type": "string",
+                  "example": "동작구"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
