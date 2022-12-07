@@ -104,15 +104,6 @@ class ReservationsRepository {
         return matchInfoSix;
     };
 
-    //'매칭 전' 임박순 6건의 장소
-    // getPlaceInfoSix = async(arr)=> {
-    //     const placeSix = await Promise.all(arr.map((val)=> {
-    //         let data = Places.findOne({ where : { spotName : val.place }});
-    //         return data;
-    //     }));
-    //     return placeSix;
-    // };
-
     // '매칭 전' 임박순 6건 매칭
     getAllMatch = async()=> {
         const data = await Reservations.findAll({
@@ -124,7 +115,8 @@ class ReservationsRepository {
         console.log(data.length)
         return data;
     };
-
+    
+    //Jest Unit test
     getAll = async()=> {
         const data = await Reservations.findAll({
             order: [["date"]],     
@@ -137,7 +129,6 @@ class ReservationsRepository {
         })
         return data
     }
-
 
     // 장소별-날짜별 매칭 전/후 조회
     getMatchResult = async(place, date)=> {

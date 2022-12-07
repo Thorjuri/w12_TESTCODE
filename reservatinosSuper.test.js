@@ -12,6 +12,7 @@ const data = {
     isDouble: '1',
     price: '0'
 };
+
 const {nickname, matchId, place, teamName, member, date, isDouble, price} = data;
 
 // 전체 부분

@@ -108,8 +108,6 @@ class ReservationsService {
         const isMatchesSix = result.splice(0, 6);
         const matchInfoSix = await this.reservationsRepository.getTeamInfoSix(isMatchesSix);
         console.log("--------------", matchInfoSix[0])
-        // console.log("----------", matchInfoSix[1])
-        // const placesInfo = await this.reservationsRepository.getPlaceInfoSix(isMatchesSix);
         let data = [];
         for (let i = 0; i < 6; i++){
             let result = { match: isMatchesSix[i], info: matchInfoSix[i]};
