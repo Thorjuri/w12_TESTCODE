@@ -36,7 +36,7 @@ app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(errorHandlerMiddleware);
 
 app.get("/", (req, res) => {
-  res.send("SPOTS 서버 상태 양호😏");
+  res.send("SPOTS 서버 상태 양호😏😏");
 });
 
 socket(http);
