@@ -35,5 +35,4 @@ describe("마감 임박 매칭 조회 API 요청", () => {
         // console.log(res)
         await expect(res.text).toEqual("다시 로그인 해주세요.");
     });
-
 });

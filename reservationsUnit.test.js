@@ -53,7 +53,3 @@ describe('reservationsRepository: createMatch 매칭 예약 단위 테스트', (
         await expect(result1.message).toBe("매치 등록 완료. 결제 후 잔여 포인트:  0 포인트");
     });
 });
-
-// test('the data is peanut butter', async () => {
-//     await expect(fetchData()).resolves.toBe('peanut butter');
-//   });
