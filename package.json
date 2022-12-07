@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "nodemon",
-    "test": "jest --runInBand --detectOpenHandles --forceExit",
+    "test": "jest --runInBand --detectOpenHandles",
     "start": "cross-env NODE_ENV=test node app.js"
   },
   "dependencies": {
