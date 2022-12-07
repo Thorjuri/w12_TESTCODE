@@ -68,7 +68,7 @@ jobs:
           username: ${{ secrets.CI_CD_USERNAME }}
           port: ${{ secrets.CI_CD_PORT }}
           script: |
-            cd ${{ secrets.CI_CD_PATH1 }}
+            cd ${{ secrets.CI_CD_PATH }}
             sudo git pull origin master
             sudo npm install
             sudo pm2 restart app.js
