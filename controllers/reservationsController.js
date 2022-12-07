@@ -30,13 +30,13 @@ class ReservationsController {
   };
 
   // '매칭 전' 임박순 6건 매칭
-  getAllMatch = async (req, res) => {
+  getAllMatch = async(req, res) => {
     const data = await this.reservationsService.getAllMatch();
     res.status(200).send(data);
   };
 
   // 장소별-날짜별 매칭 전/후 조회
-  getMatchResult = async (req, res) => {
+  getMatchResult = async(req, res) => {
     const { place, date } = req.params;
     const data = await this.reservationsService.getMatchResult(place, date);
     res.status(200).send(data);

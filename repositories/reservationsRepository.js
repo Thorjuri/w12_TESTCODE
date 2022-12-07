@@ -112,7 +112,6 @@ class ReservationsRepository {
                 [Op.like]: "%" + "ismatch" + "%"
             } } 
         });
-        console.log(data.length)
         return data;
     };
     
