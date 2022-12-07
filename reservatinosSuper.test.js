@@ -1,6 +1,8 @@
 const request = require("supertest");
 const app = require("./app");
 const application = request(app);
+const mysql2 = require("mysql2"); //mysql 모듈 import
+const http = require("./app");
 
 const data = {
     nickname: 'hulk',
@@ -17,6 +19,11 @@ const {nickname, matchId, place, teamName, member, date, isDouble, price} = data
 
 // 전체 부분
 describe("마감 임박 매칭 조회 API 요청", () => {
+
+  afterAll(async () => {
+    });
+
+
   // 비동기로 결과를 반환하기 때문에 response를 await으로
     test("GET 조회 시 200 반환", async() => {
       //사용하는 method와 그 안에 api URL을 넣어준다.

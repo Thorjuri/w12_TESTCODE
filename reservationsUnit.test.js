@@ -1,8 +1,15 @@
 const ReservationsRepository = require('./repositories/reservationsRepository');
 let reservationsRepository = new ReservationsRepository();
 const { Reservations, Users, Teams, Places } = require('./models');
+const http = require("./app");
+const mysql2 = require("mysql2"); //mysql 모듈 import
+
 
 describe('reservationsRepository: createMatch 매칭 예약 단위 테스트', () => {
+    
+    afterAll(async () => {
+    });
+    
         jest.spyOn(reservationsRepository, "createMatch");
         jest.spyOn(reservationsRepository, "createPayment");
         jest.spyOn(reservationsRepository, "updateMatch");

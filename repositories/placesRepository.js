@@ -2,14 +2,14 @@ const { Places, Opens, Reservations } = require("../models");
 require("dotenv").config();
 const mysql2 = require("mysql2"); //mysql 모듈 import
 
-var db = mysql2.createConnection({
-  //mpsql DB 연결  keywords 할때 sequelize 아니라서 다시 연결
-  host: process.env.DB_ENDPOINT,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-db.connect();
+// var db = mysql2.createConnection({
+//   //mpsql DB 연결  keywords 할때 sequelize 아니라서 다시 연결
+//   host: process.env.DB_ENDPOINT,
+//   user: process.env.DB_USERNAME,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+// });
+// db.connect();
 
 class PlacesRepository {
   //시설등록
