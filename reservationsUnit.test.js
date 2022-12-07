@@ -30,26 +30,30 @@ describe('reservationsRepository: createMatch 매칭 예약 단위 테스트', (
 
     test("test1", async() => {
         const result1 = await reservationsRepository.createMatch(nickname, matchId, place, teamName, member, date, isDouble, price)
-        expect(result1.data.price).toBe(0);
+        await expect(result1.data.price).toBe(0);
     });
     test("test2", async() => {
         const result1 = await reservationsRepository.createMatch(nickname, matchId, place, teamName, member, date, isDouble, price)
-        expect(reservationsRepository.createPayment).toBeCalledTimes(2);
+        await expect(reservationsRepository.createPayment).toBeCalledTimes(2);
     });
     test("test3", async() => {
         const result1 = await reservationsRepository.createMatch(nickname, matchId, place, teamName, member, date, isDouble, price)
-        expect(reservationsRepository.updateMatch).toBeCalledTimes(3);
+        await expect(reservationsRepository.updateMatch).toBeCalledTimes(3);
     });
     test("test4", async() => {
         const result1 = await reservationsRepository.createMatch(nickname, matchId, place, teamName, member, date, isDouble, price)
-        expect(Reservations.findOne).toBeCalledTimes(4);
+        await expect(Reservations.findOne).toBeCalledTimes(4);
     });
     test("test5", async() => {
         const result1 = await reservationsRepository.createMatch(nickname, matchId, place, teamName, member, date, isDouble, price)
-        expect(Reservations.update).toBeCalledTimes(5);
+        await expect(Reservations.update).toBeCalledTimes(5);
     });
     test("test6", async() => {
         const result1 = await reservationsRepository.createMatch(nickname, matchId, place, teamName, member, date, isDouble, price)
-        expect(result1.message).toBe("매치 등록 완료. 결제 후 잔여 포인트:  0 포인트");
+        await expect(result1.message).toBe("매치 등록 완료. 결제 후 잔여 포인트:  0 포인트");
     });
 });
+
+// test('the data is peanut butter', async () => {
+//     await expect(fetchData()).resolves.toBe('peanut butter');
+//   });

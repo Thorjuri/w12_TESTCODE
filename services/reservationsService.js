@@ -88,7 +88,7 @@ class ReservationsService {
 
     // 기간 차이 계산
     getDateDiff = async(d1, d2) => {     
-        const diffDate = d1.getTime() - d2.getTime();
+        const diffDate = await d1.getTime() - d2.getTime();
         return diffDate / (1000 * 60 * 60 * 24); // 밀리세컨 * 초 * 분 * 시 = 일
     };
 

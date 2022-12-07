@@ -24,7 +24,7 @@ class ReservationsRepository {
     // 매칭 성사 여부 업데이트
     updateMatch = async(matchId)=> {
         const data = await Reservations.findAll({ attributes : ["matchId"] });
-        const counts = data.filter((val) => { return val.matchId === matchId });
+        const counts = await data.filter((val) => { return val.matchId === matchId });
         if(counts.length >= 2){
             const results = await Reservations.update({ result : "매칭 완료" }, { where : { matchId } })
             return results
