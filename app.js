@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 
 socket(http);
 
-if(process.env.NODE_ENV !== test) {
+if(process.env.NODE_ENV !== 'test') {
   http.listen(port, () => {
     console.log(`${port}번 포트로 서버 실행`);
   });
